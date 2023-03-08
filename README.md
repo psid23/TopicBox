@@ -1,3 +1,5 @@
+[![Hack Together: Microsoft Graph and .NET](https://img.shields.io/badge/Microsoft%20-Hack--Together-orange?style=for-the-badge&logo=microsoft)](https://github.com/microsoft/hack-together)
+
 # TopicBox
 This is a basic ASP.NET Core Razor Application that utilizes the Microsoft Graph.NET SDK to filter emails by your favorite topics
 
@@ -9,4 +11,6 @@ You will now be able to see your favorite topics and the filtered emails that ha
 
 ![image](https://user-images.githubusercontent.com/40687015/223735772-d73a9a4b-5843-4a46-81e6-5851665c8b9e.png)
 
-You can visit back to delete and add ned topics - Depending on the topics added, the Topic Box will show you the filtered emails
+You can visit back to delete and add new topics - Depending on the topics added, the Topic Box will show you the filtered emails
+
+[![Hack Together: Microsoft Graph and .NET](https://img.shields.io/badge/Microsoft%20-Hack--Together-orange?style=for-the-badge&logo=microsoft)](https://github.com/microsoft/hack-together)
