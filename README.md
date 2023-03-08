@@ -5,7 +5,7 @@ This is an ASP.NET Core Razor Productivity Tool that utilizes the Microsoft Grap
 
 This is a basic version with scope to add further features and usability enhancements.
 
-Add your favorite topics anc click on the Topic Box
+Add your favorite topics and click on the Topic Box in the menu
 
 ![image](https://user-images.githubusercontent.com/40687015/223748949-4dad6f22-e310-4aab-86d1-a68b2a3e56ee.png)
 
