@@ -1,7 +1,7 @@
 [![Hack Together: Microsoft Graph and .NET](https://img.shields.io/badge/Microsoft%20-Hack--Together-orange?style=for-the-badge&logo=microsoft)](https://github.com/microsoft/hack-together)
 
 # Topic Box
-This is an ASP.NET Core Razor Productivity Tool that utilizes the Microsoft Graph.NET SDK to filter emails by your favorite topics. 
+This is an ASP.NET Core Razor Pages Productivity Tool that utilizes the Microsoft Graph.NET SDK to filter emails by your favorite topics. 
 
 This is a basic version with scope to add further features and usability enhancements.
 
