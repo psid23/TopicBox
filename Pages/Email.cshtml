@@ -1,0 +1,66 @@
+@page
+@model EmailModel
+@{
+    ViewData["Title"] = "Topic Box";
+}
+<div>    
+    @if (User.Identity.IsAuthenticated)
+    {
+        <hr />
+        <h5>Topics of Interest</h5>
+        <ul class="nav justify-content-center">
+        @foreach (var topic in Model.Topics)
+        {
+                <li class="nav-item"><a class="nav-link disabled">@topic</a></li>
+        }
+        </ul>
+        <h6>Filtered Emails</h6>
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="all">
+                <div id="email-list">
+                    @if (Model.Messages != null && Model.Messages.Any())
+                    {
+                        @foreach (var message in Model.Messages)
+                        {
+                            <div class="email" data-topic="@String.Join(",", message.Categories ?? new string[0])">
+                                <div class="card" style="width: 50rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <a href="@message.WebLink" target="_blank">@message.Subject</a>                                            
+                                        </h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">
+                                            @message.ReceivedDateTime.GetValueOrDefault().UtcDateTime
+                                        </h6>
+                                        <p class="card-text">
+                                            @message.BodyPreview
+                                        </p>
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                        }
+                        @if (!String.IsNullOrEmpty(Model.NextLink))
+                        {
+                            <a asp-page="/Email" asp-route-nextlink="@Model.NextLink" class="btn btn-primary">Next Page</a>
+                        }
+                    }
+                    else
+                    {
+                        <div>No Messages found</div>
+                    }
+                </div>
+            </div>
+            @*@foreach (var topic in Model.Topics)           {
+                
+                <div class="tab-pane fade" id="@topic">
+                    <div id="@topic-email-list">                       
+                    </div>
+                </div>
+            }*@
+        </div>
+    }
+    else
+    {
+        <a class="btn btn-primary btn-large" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn">Click here to sign in</a>
+    }
+</div>

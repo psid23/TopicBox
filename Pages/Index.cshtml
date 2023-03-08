@@ -1,0 +1,71 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Topic Box";
+}
+
+<div>    
+    @if (User.Identity.IsAuthenticated)
+    {
+        <h4>
+            @if (Model.UserPhoto != null)
+            {
+                <img src="data:image/jpeg;base64, @Model.UserPhoto" class="user-photo nav-profile-photo rounded-circle align-self-center mr-2" />
+            }
+            Welcome @Model.UserDisplayName!</h4>
+    }
+    else
+    {
+        <a class="btn btn-primary btn-large" href="https://localhost:5001/signin-oidc">Click here to sign in</a>
+    }
+    <div>        
+        <form method="post">
+            <div class="form-group">
+                <label for="topicInput">Add Topics of interest(Maximum 5): Then Click on Topic Box from Menu to view Filtered Inbox as per Topics</label>
+                <input class="form-control" maxlength="30" type="text" id="topicInput" name="TopicInput" required />
+            </div>
+            @if (!@Model.isTopicsCountReached)
+            {
+                <button type="submit" class="btn btn-primary">Add</button>
+            }
+        </form>
+
+        <hr />
+
+        @if (Model.Topics == null || Model.Topics.Count == 0)
+        {
+            <p>No topics added yet.</p>
+        }
+        else
+        {
+            <ul>
+                @foreach (var topic in Model.Topics)
+                {
+                    <li>
+                        @topic
+                        <form method="post" asp-page-handler="Delete" asp-route-topic="@topic">
+                            <button type="submit" class="btn btn-danger btn-sm ml-2">Delete</button>
+                        </form>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+    @* This section handles the form submission *@
+    @if (Model.IsPost)
+    {
+        <div class="alert alert-success">
+            <strong>Success!</strong> The topic "@Model.NewTopic" was added.
+        </div>
+    }
+
+    @* This section includes the script that updates the UI after a form submission *@
+    @section Scripts {
+        <script>
+            // Update the UI after a form submission
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, window.location.href);
+            }
+        </script>
+    }
+</div>
